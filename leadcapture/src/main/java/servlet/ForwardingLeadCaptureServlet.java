@@ -39,7 +39,7 @@ public class ForwardingLeadCaptureServlet extends HttpServlet {
         }
 
         Lead lead = new Lead(req);
-        StringBuffer ve = new StringBuffer(startPage);
+        StringBuffer ve = new StringBuffer("https://powerful-thicket-90637.herokuapp.com" + startPage);
         if(lead.getUserEmail() == null){
             ve.append("?ve=email");
             resp.sendRedirect(ve.toString());
