@@ -2,6 +2,7 @@ package servlet;/*
  * Copyright, 1999-2017, salesforce.com All Rights Reserved Company Confidential
  */
 
+import org.apache.commons.lang3.StringUtils;
 import servlet.Lead;
 
 import javax.servlet.ServletException;
@@ -40,7 +41,7 @@ public class ForwardingLeadCaptureServlet extends HttpServlet {
 
         Lead lead = new Lead(req);
         StringBuffer ve = new StringBuffer("https://powerful-thicket-90637.herokuapp.com" + startPage);
-        if(lead.getUserEmail() == null){
+        if(StringUtils.isEmpty(lead.getUserEmail())){
             ve.append("?ve=email");
             resp.sendRedirect(ve.toString());
             return;
@@ -53,6 +54,7 @@ public class ForwardingLeadCaptureServlet extends HttpServlet {
         }
 
         leads.add(lead);
+        resp.sendRedirect("https://powerful-thicket-90637.herokuapp.com/success.html");
 
     }
 }
