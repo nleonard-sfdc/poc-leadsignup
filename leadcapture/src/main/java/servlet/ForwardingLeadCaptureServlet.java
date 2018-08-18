@@ -21,7 +21,8 @@ public class ForwardingLeadCaptureServlet extends HttpServlet {
 
     @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         StringBuffer sb = new StringBuffer("Leads:<br />\n");
-        for(Lead lead : leads){
+        for(Object obj : leads.toArray()){
+            Lead lead = (Lead)obj;
             sb.append(lead + "<br />\n");
         }
 
