@@ -32,7 +32,26 @@ public class ForwardingLeadCaptureServlet extends HttpServlet {
     }
 
     @Override protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String startPage = req.getParameter("startPage");
+        if(startPage == null){
+            startPage = "/form/demo.html";
+        }
+
         Lead lead = new Lead(req);
+        StringBuffer ve = new StringBuffer(startPage);
+        if(lead.getUserEmail() == null){
+            ve.append("?ve=email");
+            resp.sendRedirect(ve.toString());
+            return;
+        }
+
+        if(lead.getUserEmail().contains("spam")){
+            ve.append("?ve=CaptchaRequired");
+            resp.sendRedirect(ve.toString());
+            return;
+        }
+
         leads.add(lead);
 
     }
