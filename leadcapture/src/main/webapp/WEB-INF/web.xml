@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Leadcapture Application</display-name>
+
+  <servlet>
+    <servlet-name>ForwardingLeadCaptureServlet</servlet-name>
+    <servlet-class>servlet.ForwardingLeadCaptureServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ForwardingLeadCaptureServlet</servlet-name>
+    <url-pattern>/ForwardingLeadCaptureServlet</url-pattern>
+  </servlet-mapping>
+
 </web-app>
